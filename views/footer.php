@@ -4,7 +4,7 @@
 				  $time = number_format(($time_end - $time_start)*1000,6);
 				  echo $time; ?>ms pour exécuter le script PHP :: 
 			<!-- ! adresse email non cryptée : spam possible -->
-	        <a href="mailto:<?php echo EMAIL ?>"><?php echo EMAIL ?></a>
+	        <a href="mailto:<?php echo EMAIL ?>"><?php echo EMAIL.'de Lin Chih Huai' ?></a>
 			<p id="copyright">Mise en page d'après
 				<a href="http://www.alsacreations.com/tutoriels/">Alsacréations</a>
 			</p>
