@@ -22,23 +22,59 @@
 	# Tester si une variable GET 'action' est précisée dans l'URL index.php?action=...
 	$action = (isset($_GET['action'])) ? htmlentities($_GET['action']) : 'default';
 	# Quelle action est demandée ?
-	switch($action) {
+/**
+ * @return GeneseController
+ */
+function controller_genese()
+{
+    require_once('controllers/GeneseController.php');
+    $controller = new GeneseController();
+    return $controller;
+}
+
+/**
+ * @return LivresController
+ */
+function controller_livres()
+{
+    require_once('controllers/LivresController.php');
+    $controller = new LivresController();
+    return $controller;
+}
+
+/**
+ * @return ContactController
+ */
+function controller_contact()
+{
+    require_once('controllers/ContactController.php');
+    $controller = new ContactController();
+    return $controller;
+}
+
+/**
+ * @return AccueilController
+ */
+function controller_defaut()
+{
+    require_once('controllers/AccueilController.php');
+    $controller = new AccueilController();
+    return $controller;
+}
+
+switch($action) {
 		case 'genese':
-			require_once('controllers/GeneseController.php');	
-			$controller = new GeneseController();
-			break;
+			$controller = controller_genese();
+            break;
 		case 'livres':
-			require_once('controllers/LivresController.php');	
-			$controller = new LivresController();
-			break;
+			$controller = controller_livres();
+            break;
 		case 'contact':
-			require_once('controllers/ContactController.php');	
-			$controller = new ContactController();
-			break;	
+			$controller = controller_contact();
+            break;
 		default: # Par défaut, le contrôleur de l'accueil est sélectionné
-			require_once('controllers/AccueilController.php');	
-			$controller = new AccueilController();
-			break;
+			$controller = controller_defaut();
+            break;
 	}
 	# Exécution du contrôleur correspondant à l'action demandée
 	$controller->run();
